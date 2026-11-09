@@ -6,9 +6,9 @@ export function Audience() {
           Hvem passer Plinq for?
         </h2>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-muted">
-          Bakerier, kafeer, butikker og andre små bedrifter som ønsker å vise
-          reklame på egne skjermer — uten å bli avhengig av store,
-          kompliserte plattformer.
+          Bakerier, kafeer, butikker og andre bedrifter som vil vise reklame på
+          egne skjermer. Vi tar utgangspunkt i virksomheten deres, enten dere
+          har én butikk eller flere lokasjoner.
         </p>
       </div>
     </section>

@@ -1,3 +1,4 @@
+// Reserved for a future subscription launch. Do not import into public routes.
 export const plans = [
   { id: 'gratis', name: 'Gratis', price: '0', unit: 'kr/mnd.', description: 'For små butikker som ønsker å komme i gang.', detail: '1 skjerm', cta: 'Kom i gang gratis' },
   { id: 'standard', name: 'Standard', price: '99', unit: 'kr per skjerm per måned', description: 'For butikker som trenger flere skjermer.', detail: 'Pris per skjerm', cta: 'Velg Standard' },

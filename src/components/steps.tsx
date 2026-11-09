@@ -1,7 +1,7 @@
 const steps = [
   {
-    title: "Last opp",
-    description: "Ta et bilde eller velg en video.",
+    title: "Fortell oss om bedriften din",
+    description: "Vi starter med en prat om skjermene, lokasjonene og behovene deres.",
     icon: (
       <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
         <path d="M12 16V4m0 0 4 4m-4-4-4 4M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" strokeLinecap="round" strokeLinejoin="round" />
@@ -9,8 +9,8 @@ const steps = [
     ),
   },
   {
-    title: "Publiser",
-    description: "Velg hvilken skjerm reklamen skal vises på.",
+    title: "Vi hjelper deg med oppsett og tilpasning",
+    description: "Sammen avklarer vi løsningen og får skjermene klare til bruk.",
     icon: (
       <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
         <path d="M7 7h10M7 12h6M7 17h8" strokeLinecap="round" />
@@ -19,8 +19,8 @@ const steps = [
     ),
   },
   {
-    title: "Vis",
-    description: "Reklamen vises automatisk på TV-en.",
+    title: "Publiser reklame på skjermene dine",
+    description: "Ansatte laster opp bilder og videoer fra mobilen og velger skjermene reklamen skal vises på.",
     icon: (
       <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
         <rect x="2" y="5" width="20" height="13" rx="2" />
@@ -32,13 +32,13 @@ const steps = [
 
 export function Steps() {
   return (
-    <section id="slik-fungerer-det" className="scroll-mt-24 py-16 sm:py-24">
+    <section id="slik-hjelper-vi-deg" className="scroll-mt-24 py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-text sm:text-3xl">
-          Slik fungerer det
+          Vi hjelper deg hele veien
         </h2>
         <p className="mt-3 max-w-xl text-text-muted">
-          Tre enkle steg — ingen komplisert oppsett.
+          Personlig kontakt fra første samtale til dere publiserer selv.
         </p>
         <ol className="mt-12 grid gap-6 sm:grid-cols-3 sm:gap-8">
           {steps.map((step, index) => (

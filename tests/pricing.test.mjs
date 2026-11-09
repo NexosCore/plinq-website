@@ -1,31 +1,51 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const home = readFileSync(new URL('../out/index.html', import.meta.url), 'utf8');
-const prices = readFileSync(new URL('../out/priser.html', import.meta.url), 'utf8');
-for (const [route, html] of [['/', home], ['/priser', prices]]) {
-  test(`${route}: confirmed prices and safe contact destinations`, () => {
-    assert.match(html, /<strong>0<\/strong>/);
-    assert.match(html, /<strong>99<\/strong>/);
-    const enterprise = html.match(/<article[^>]*aria-labelledby="plan-enterprise"[\s\S]*?<\/article>/)?.[0];
-    assert.ok(enterprise);
-    assert.doesNotMatch(enterprise.replace(/<[^>]*>/g, ""), /\d|kr\/mnd/);
-    assert.doesNotMatch(enterprise, /price-unit|price-prefix/);
-    assert.match(enterprise, /Kontakt oss for pris/);
-    assert.doesNotMatch(html, /499/);
-    assert.match(html, /kr per skjerm per måned/);
-    assert.match(html, /1 skjerm/);
-    for (const plan of ['gratis', 'standard', 'enterprise']) {
-      assert.ok(html.includes(`href="/priser/#kontakt-${plan}"`));
-    }
-    assert.doesNotMatch(html, /href="[^"]*(?:checkout|stripe|register|signup)/i);
+const output = new URL('../out/', import.meta.url);
+const home = readFileSync(new URL('index.html', output), 'utf8');
+const business = readFileSync(new URL('priser.html', output), 'utf8');
+for (const [route, html] of [['/', home], ['/priser', business]]) {
+  test(`${route}: business positioning without public subscription offers`, () => {
+    assert.doesNotMatch(html, /Gratis|Standard|Enterprise|kr\/mnd|99 kr|499 kr|Start gratis|Åpne Plinq/);
+    assert.match(html, /Kontakt oss for tilbud/);
+    assert.match(html, /For bedrifter/);
+    assert.match(html, /id="kontakt"/);
+    assert.doesNotMatch(html, /<form\b|href="[^"]*(?:checkout|stripe|register|signup)/i);
+    const mailLinks = [...html.matchAll(/href="(mailto:[^"]+)"/g)].map(match => match[1].replaceAll('&amp;', '&'));
+    assert.ok(mailLinks.length >= 3);
+    for (const link of mailLinks) assert.equal(new URL(link).pathname, 'support@plinq.no');
+    const draft = new URL(mailLinks.find(link => link.includes('subject=')));
+    assert.match(draft.searchParams.get('body'), /Antall skjermer/);
+    assert.match(draft.searchParams.get('body'), /Butikker eller lokasjoner/);
+    const appLinks = [...html.matchAll(/href="(https:\/\/app\.plinq\.no[^"]*)"/g)];
+    assert.ok(appLinks.every(match => match[1] === 'https://app.plinq.no/login'));
+    assert.match(html, /Logg inn · eksisterende kunder/);
   });
 }
-test('pricing page has FAQ, contact targets and plan-specific email drafts', () => {
-  assert.equal((prices.match(/<details>/g) || []).length, 5);
-  for (const plan of ['gratis', 'standard', 'enterprise']) assert.ok(prices.includes(`id="kontakt-${plan}"`));
-  for (const plan of ['Gratis', 'Standard', 'Enterprise']) assert.ok(prices.includes(`mailto:support@plinq.no?subject=Plinq%20%E2%80%93%20${plan}`));
-  assert.ok(prices.includes('https://plinq.no/priser'));
-  assert.doesNotMatch(prices, /Kontaktinformasjon kommer/);
+test('homepage includes the service journey and product explanation', () => {
+  assert.match(home, /Digital reklame på TV –/);
+  assert.match(home, /enkelt for din bedrift/);
+  assert.match(home, /Vi hjelper deg hele veien/);
+  assert.match(home, /Fortell oss om bedriften din/);
+  assert.match(home, /Vi hjelper deg med oppsett og tilpasning/);
+  assert.match(home, /Publiser reklame på skjermene dine/);
+  assert.match(home, /id="slik-fungerer-det"/);
+  assert.match(home, /href="\/priser"/);
+});
+test('business page provides quote factors, FAQ and canonical metadata', () => {
+  assert.match(business, /En løsning tilpasset/);
+  for (const phrase of ['Skjermene dine', 'Butikker og lokasjoner', 'Oppsett', 'Tilpasninger']) assert.ok(business.includes(phrase));
+  assert.equal((business.match(/<details>/g) || []).length, 5);
+  assert.match(business, /https:\/\/plinq.no\/priser/);
+});
+function files(path) {
+  return readdirSync(path, { withFileTypes: true }).flatMap(entry => entry.isDirectory() ? files(join(path, entry.name)) : [join(path, entry.name)]);
+}
+test('retained plan data is absent from exported HTML, RSC payloads and JavaScript', () => {
+  for (const file of files(fileURLToPath(output)).filter(file => /\.(html|txt|js|json)$/.test(file))) {
+    assert.doesNotMatch(readFileSync(file, 'utf8'), /Kom i gang gratis|Velg Standard|kontakt-gratis|kontakt-standard|99 kr per skjerm|0 kr\/mnd/, file);
+  }
 });

@@ -1,4 +1,4 @@
-import { Pricing } from "@/components/pricing";
+import { BusinessSolution } from "@/components/business-solution";
 import { Audience } from "@/components/audience";
 import { Benefits } from "@/components/benefits";
 import { Cta } from "@/components/cta";
@@ -18,7 +18,7 @@ export default function Home() {
         <Steps />
         <Benefits />
         <Audience />
-        <Pricing />
+        <BusinessSolution />
         <Cta />
       </main>
       <SiteFooter />

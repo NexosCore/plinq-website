@@ -11,11 +11,11 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL("https://plinq.no"),
   title: {
-    default: "Plinq · Digital signage for butikk",
+    default: "Plinq · Digital reklame på TV for bedrifter",
     template: "%s · Plinq",
   },
   description:
-    "Gjør TV-skjermene i butikken levende. Last opp bilder og videoer fra mobilen, publiser med noen få trykk og la Plinq ta seg av resten.",
+    "Plinq gjør det enkelt å vise reklamebilder og videoer på TV-skjermer. Vi hjelper deg med oppsett og en løsning som passer virksomheten din.",
   keywords: [
     "digital signage",
     "butikk-TV",
@@ -29,19 +29,19 @@ export const metadata: Metadata = {
     locale: "nb_NO",
     url: "https://plinq.no",
     siteName: "Plinq",
-    title: "Plinq · Din reklame. På skjermen. På sekunder.",
+    title: "Plinq · Digital reklame på TV – tilpasset din bedrift.",
     description:
-      "Gjør TV-skjermene i butikken levende. Publiser bilder og video fra mobilen.",
+      "Digital reklame på TV – tilpasset din bedrift. Personlig kontakt, oppsett og tilpasning med Plinq.",
     images: [
-      { url: "/images/tv-reklame.png", width: 1920, height: 1080, alt: "Plinq på TV-skjerm" },
+      { url: "/images/plinq-mobil-tv.png", width: 1672, height: 941, alt: "Konseptillustrasjon av Plinq fra mobil til TV" },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Plinq · Digital signage for butikk",
+    title: "Plinq · Digital reklame på TV for bedrifter",
     description:
-      "Gjør TV-skjermene i butikken levende. Publiser fra mobilen.",
-    images: ["/images/tv-reklame.png"],
+      "Digital reklame på TV – tilpasset din bedrift. Kontakt oss for oppsett og tilbud.",
+    images: ["/images/plinq-mobil-tv.png"],
   },
   alternates: {
     canonical: "https://plinq.no",

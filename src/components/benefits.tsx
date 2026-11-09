@@ -4,7 +4,7 @@ const benefits = [
   "Administrer flere skjermer",
   "Automatisk reklameavspilling",
   "Enkelt for ansatte å bruke",
-  "Stabil avspilling med lokal lagring der det støttes",
+  "Hjelp med oppsett og tilpasning",
 ] as const;
 
 export function Benefits() {
@@ -15,10 +15,10 @@ export function Benefits() {
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-text sm:text-3xl">
-          Fordeler
+          Enkelt i butikkhverdagen
         </h2>
         <p className="mt-3 max-w-xl text-text-muted">
-          Fokus på det som teller i butikkhverdagen — ikke tunge administrasjonsverktøy.
+          Gi ansatte en enkel vei fra bilder og videoer på mobilen til reklame på butikkens skjermer.
         </p>
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {benefits.map((item) => (

@@ -1,36 +1,23 @@
-const APP_URL = "https://app.plinq.no";
+import { ConceptImage } from './concept-image';
+import { contactHref } from '@/lib/business';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-12 pb-16 sm:pt-20 sm:pb-24">
+    <section className="business-hero relative overflow-hidden py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <p className="reveal mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-ocean-mint-dim">
-          Lag reklame. Publiser. Vis på TV.
-        </p>
-        <h1 className="reveal max-w-3xl text-[2.35rem] font-bold leading-[1.08] tracking-tight text-text sm:text-5xl lg:text-[3.35rem]">
-          Din reklame. På skjermen. På sekunder.
+        <p className="pricing-eyebrow reveal">DIGITAL REKLAME · PERSONLIG OPPSETT</p>
+        <h1 className="reveal max-w-4xl text-[2.5rem] font-semibold leading-[1.08] tracking-[-0.05em] sm:text-6xl lg:text-[4.5rem]">
+          Digital reklame på TV –<br className="hidden sm:block" /> <span className="text-ocean-mint">enkelt for din bedrift.</span>
         </h1>
-        <p className="reveal mt-6 max-w-xl text-lg leading-relaxed text-text-muted sm:text-xl">
-          Gjør TV-skjermene i butikken levende. Last opp bilder og videoer fra
-          mobilen, publiser med noen få trykk og la Plinq ta seg av resten.
+        <p className="reveal mt-7 max-w-2xl text-lg leading-relaxed text-text-muted sm:text-xl">
+          Publiser bilder og videoer direkte fra mobilen til skjermene i butikken. Plinq hjelper bedrifter med en enkel løsning for digital reklame.
         </p>
-        <div
-          className="reveal mt-10 flex flex-col gap-3 sm:flex-row sm:items-center"
-          style={{ animationDelay: "0.1s" }}
-        >
-          <a
-            href={APP_URL}
-            className="inline-flex h-12 items-center justify-center rounded-full bg-ocean-mint px-7 text-base font-semibold text-midnight transition-[background,transform] hover:bg-[#8aefe4] active:scale-[0.98]"
-          >
-            Åpne Plinq
-          </a>
-          <a
-            href="#slik-fungerer-det"
-            className="inline-flex h-12 items-center justify-center rounded-full border border-border bg-midnight-elevated/80 px-7 text-base font-semibold text-text transition-colors hover:border-cyan/40 hover:bg-midnight-soft/50"
-          >
-            Se hvordan det fungerer
-          </a>
+        <div className="reveal mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <a href={contactHref} className="business-button">Kontakt oss <span aria-hidden="true">↗</span></a>
+          <a href="#slik-fungerer-det" className="inline-flex min-h-12 items-center justify-center rounded-full border border-border px-6 text-sm font-semibold transition-colors hover:border-ocean-mint">Se hvordan Plinq fungerer</a>
         </div>
+        <p className="mt-7 text-xs tracking-wide text-text-muted">Personlig kontakt. Oppsett sammen med oss. En løsning for deres behov.</p>
+        <div className="mt-12 sm:mt-16"><ConceptImage src="/images/plinq-mobil-tv.png" alt="Konseptillustrasjon av Plinq: samme reklame for bakervarer på en mobil og en TV i butikken." priority /></div>
       </div>
     </section>
   );
