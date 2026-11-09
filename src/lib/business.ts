@@ -1,5 +1,5 @@
-export const contactEmail = 'support@plinq.no';
-export const contactHref = `mailto:${contactEmail}?subject=${encodeURIComponent('Plinq – løsning for bedriften')}&body=${encodeURIComponent('Hei! Vi ønsker å høre mer om Plinq.\n\nBedrift: \nAntall skjermer: \nButikker eller lokasjoner: \nBehov for oppsett eller tilpasninger: \n')}`;
+export const contactEmail = "support@plinq.no";
+export const contactHref = "/#kontakt-skjema";
 
 export const solutionFactors = [
   { number: '01', title: 'Skjermene dine', description: 'Hvor mange skjermer ønsker dere å vise reklame på?' },

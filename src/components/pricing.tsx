@@ -22,7 +22,9 @@ export function Pricing({ fullPage = false }: { fullPage?: boolean }) {
                 <div className="plan-price"><span className="price-prefix" aria-hidden="true">{'\u00a0'}</span><strong>{plan.price}</strong><span className="price-unit">{plan.unit}</span></div>
               )}
               <div className="plan-detail"><span aria-hidden="true">✓</span>{plan.detail}</div>
-              <a className="plan-button" href={`/priser/#kontakt-${plan.id}`}>{plan.cta}<span aria-hidden="true">↗</span></a>
+              <Link className="plan-button" href="/#kontakt-skjema">
+                {plan.cta}
+              </Link>
             </article>
           ))}
         </div>

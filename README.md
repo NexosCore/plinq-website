@@ -4,14 +4,16 @@ Offentlig markedsføringsside for [Plinq](https://plinq.no) — helt separat fra
 
 ## Stack
 
-- Next.js (statisk eksport)
+- Next.js (statiske sider + `POST /api/contact`)
 - Tailwind CSS
-- Ingen database, API eller innlogging
+- [Resend](https://resend.com) for kontaktskjema
+- Ingen database, Turso, R2 eller innlogging på nettstedet
 
 ## Utvikling
 
 ```bash
 npm install
+cp .env.example .env.local
 npm run dev
 ```
 
@@ -19,7 +21,16 @@ npm run dev
 npm run lint
 npm run typecheck
 npm run build
+npm test
 ```
+
+## Miljøvariabler (Vercel)
+
+| Variabel | Beskrivelse |
+|----------|-------------|
+| `RESEND_API_KEY` | Resend API-nøkkel (kun server) |
+| `CONTACT_FROM_EMAIL` | Verifisert avsender, f.eks. `Plinq <kontakt@plinq.no>` |
+| `CONTACT_TO_EMAIL` | Mottaker, f.eks. `support@plinq.no` |
 
 ## Deploy
 
@@ -30,14 +41,9 @@ SaaS-appen deployes fra eget repo og Vercel-prosjekt (`plinq`).
 
 ## Offentlig bedriftsstrategi
 
-Forsiden og `/priser` presenterer personlig kontakt, oppsett og tilpasning.
-Kontaktpunkt: `support@plinq.no`. Ingen registrering eller betaling på nettstedet.
-Tidligere prisdata og priskomponent beholdes i `src/lib/pricing.ts` og
-`src/components/pricing.tsx`, men skal ikke importeres fra offentlige sider.
+Forsiden og `/priser` leder til kontaktskjemaet (`/#kontakt-skjema`).
+Ingen registrering eller betaling på nettstedet.
 
-Verifiser etter bygg med `node --test tests/pricing.test.mjs`.
-Testene kontrollerer også at planene ikke lekker inn i eksporterte sider og skript.
+Tidligere prisdata beholdes i `src/lib/pricing.ts`, men brukes ikke på offentlige sider.
 
-Produktillustrasjoner: De tre `public/images/plinq-*.png`-filene er levert av brukeren.
-De vises med merking som konseptillustrasjoner, ikke som skjermbilder av dagens app.
-Originalt TV-testbilde er bevart, men brukes ikke i offentlig presentasjon.
+Verifiser med `npm test`.

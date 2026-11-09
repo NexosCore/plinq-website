@@ -11,7 +11,7 @@ export function SiteHeader() {
         <Link href="/priser" className="hover:text-text">For bedrifter</Link>
         <Link href="/#kontakt" className="hover:text-text">Kontakt</Link>
       </nav>
-      <div className="flex items-center gap-4"><Link href="/priser" className="text-xs text-text-muted hover:text-text md:hidden">For bedrifter</Link><a href={contactHref} className="rounded-full bg-ocean-mint px-4 py-2.5 text-xs font-semibold text-midnight transition-colors hover:bg-[#8aefe4] sm:text-sm">Kontakt oss</a></div>
+      <div className="flex items-center gap-4"><Link href="/priser" className="text-xs text-text-muted hover:text-text md:hidden">For bedrifter</Link><Link href={contactHref} className="rounded-full bg-ocean-mint px-4 py-2.5 text-xs font-semibold text-midnight transition-colors hover:bg-[#8aefe4] sm:text-sm">Kontakt oss</Link></div>
     </div>
   </header>;
 }

@@ -1,5 +1,6 @@
 import { ConceptImage } from './concept-image';
-import { contactHref } from '@/lib/business';
+import Link from "next/link";
+import { contactHref } from "@/lib/business";
 
 export function Hero() {
   return (
@@ -13,7 +14,9 @@ export function Hero() {
           Publiser bilder og videoer direkte fra mobilen til skjermene i butikken. Plinq hjelper bedrifter med en enkel løsning for digital reklame.
         </p>
         <div className="reveal mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <a href={contactHref} className="business-button">Kontakt oss <span aria-hidden="true">↗</span></a>
+          <Link href={contactHref} className="business-button">
+            Kontakt oss
+          </Link>
           <a href="#slik-fungerer-det" className="inline-flex min-h-12 items-center justify-center rounded-full border border-border px-6 text-sm font-semibold transition-colors hover:border-ocean-mint">Se hvordan Plinq fungerer</a>
         </div>
         <p className="mt-7 text-xs tracking-wide text-text-muted">Personlig kontakt. Oppsett sammen med oss. En løsning for deres behov.</p>
