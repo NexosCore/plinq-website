@@ -12,6 +12,7 @@ export function SiteFooter() {
             Et produkt fra Nexos AS.
           </p>
         </div>
+        <a href="/priser" className="text-sm text-text-muted hover:text-ocean-mint">Priser</a>
         <a
           href={APP_URL}
           className="text-sm font-medium text-ocean-mint transition-colors hover:text-[#8aefe4]"

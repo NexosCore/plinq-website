@@ -15,12 +15,12 @@ export function SiteHeader() {
           className="hidden items-center gap-8 text-sm font-medium text-text-muted md:flex"
           aria-label="Hovedmeny"
         >
-          <a href="#slik-fungerer-det" className="transition-colors hover:text-text">
+          <Link href="/#slik-fungerer-det" className="transition-colors hover:text-text">
             Hvordan det fungerer
-          </a>
-          <a href="#fordeler" className="transition-colors hover:text-text">
+          </Link>
+          <Link href="/#fordeler" className="transition-colors hover:text-text">
             Fordeler
-          </a>
+          </Link>
           <a
             href={`${APP_URL}/login`}
             className="transition-colors hover:text-text"
@@ -30,6 +30,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <Link href="/priser" className="text-sm font-medium text-text hover:text-ocean-mint">Priser</Link>
           <a
             href={`${APP_URL}/login`}
             className="text-sm font-medium text-text-muted transition-colors hover:text-text md:hidden"
